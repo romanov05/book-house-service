@@ -1,16 +1,13 @@
 import { BookHouseServiceHomeButtonComponent } from "../../book-house-service-components/book-house-service-home-button/book-house-service-index.js";
 import { BookHouseServiceDetailComponent } from "../../book-house-service-components/book-house-service-detail/book-house-service-index.js";
 import { BookHouseServiceMainPage } from "../book-house-service-main/book-house-service-index.js";
+import { ajax } from "../../book-house-service-modules/book-house-service-ajax.js";
+import { bookHouseServiceUrls } from "../../book-house-service-modules/book-house-service-urls.js";
 
 export class BookHouseServicePage {
-    constructor(bookHouseServiceParent, bookHouseServiceId, bookHouseServiceAllServices) {
+    constructor(bookHouseServiceParent, bookHouseServiceId) {
         this.bookHouseServiceParent = bookHouseServiceParent;
         this.bookHouseServiceId = bookHouseServiceId;
-        this.bookHouseServiceAllServices = bookHouseServiceAllServices;
-    }
-
-    bookHouseServiceGetData() {
-        return this.bookHouseServiceAllServices.find(bookHouseServiceItem => bookHouseServiceItem.bookHouseServiceId === this.bookHouseServiceId) || this.bookHouseServiceAllServices[0];
     }
 
     get bookHouseServicePageRoot() {
@@ -26,6 +23,19 @@ export class BookHouseServicePage {
         bookHouseServiceMainPage.bookHouseServiceRender();
     }
 
+    bookHouseServiceGetData() {
+        ajax.get(bookHouseServiceUrls.getServiceById(this.bookHouseServiceId), (data, status) => {
+            if (status >= 200 && status < 300 && data) {
+                const bookHouseServiceDetail = new BookHouseServiceDetailComponent(this.bookHouseServicePageRoot);
+                bookHouseServiceDetail.bookHouseServiceRender(data);
+            } else {
+                if (this.bookHouseServicePageRoot) {
+                    this.bookHouseServicePageRoot.innerHTML = `<p class="text-danger">Ошибка XHR: не удалось получить данные карточки.</p>`;
+                }
+            }
+        });
+    }
+
     bookHouseServiceRender() {
         this.bookHouseServiceParent.innerHTML = "";
         const bookHouseServiceHomeButton = new BookHouseServiceHomeButtonComponent(this.bookHouseServiceParent);
@@ -34,8 +44,6 @@ export class BookHouseServicePage {
         const bookHouseServiceHtml = this.bookHouseServiceGetHTML();
         this.bookHouseServiceParent.insertAdjacentHTML('beforeend', bookHouseServiceHtml);
 
-        const bookHouseServiceData = this.bookHouseServiceGetData();
-        const bookHouseServiceDetail = new BookHouseServiceDetailComponent(this.bookHouseServicePageRoot);
-        bookHouseServiceDetail.bookHouseServiceRender(bookHouseServiceData);
+        this.bookHouseServiceGetData();
     }
 }
