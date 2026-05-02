@@ -1,97 +1,69 @@
-/* опишем базовый стиль кнопки калькулятора */
-.my-btn {
-  margin-right: 5px;                     /* задаем отступ от кнопки справа */
-  margin-top: 5px;                       /* задаем отступ от кнопки сверху*/
-  width: 60px;                           /* задаем ширину кнопки */
-  height: 60px;                          /* задаем высоту кнопки */
-  border-radius: 50%;                    /* округляем кнопку */
-  border: none;                          /* отключаем обводку */
-  background: linear-gradient(rgb(111, 207, 151) 0px, rgb(39, 174, 96) 100%);  /* задаем зеленый градиент для кнопки */
-  color: rgb(255, 255, 255);           /* задаем белый цвет текста внутри кнопки */
-  font-size: 28px;                       /* задаем размер шрифта */
-  font-family: "Open Sans", sans-serif;  /* задаем шрифт */
-  cursor: pointer;                       /* при наведении на кнопку курсор будет изменен
-                                         со стрелки на 'указательный палец' */
-  user-select: none;                     /* отключаем возможность выделить текст внутри кнопки */
-  transition: all .3s                    /* добавляем плавность анимаций */
+/* Хедер */
+.book-house-service-app-header {
+    background-color: rgb(51, 51, 51);
+    color: white;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
 }
 
-/* hover - это состояние элемента, когда на него наведен курсор */
-.my-btn:hover {
-  box-shadow: 0 6px 12px rgba(33,150,83,.45),0 0 0 rgba(0,0,0,.25) inset  /* задаем тень */
+.book-house-service-app-header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
-.my-btn:active {
-  box-shadow: 0 0 0 rgba(0,0,0,.2),0 2px 2px rgba(0,0,0,.25) inset  /* добавляем эффект вдавленной кнопки */
+.book-house-service-app-header__title {
+    font-size: 1.5rem;
+    font-weight: 500;
 }
 
-/* селектор для кнопок первостепенных операций */
-.my-btn.primary {
-  background: rgb(39, 174, 96)  /* цвет кнопки зеленый */
+.book-house-service-app-header__home-btn {
+    color: white;
+    border: none;
+    transition: background-color 0.2s;
 }
 
-/* селектор для кнопок второстепенных операций */
-.my-btn.secondary {
-  background: rgb(51, 51, 51)  /* цвет кнопки темно-серый */
+/* Сетка карточек: 4 колонки */
+.book-house-service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
 }
 
-/* селектор для кнопки расчета выражения (=) */
-.my-btn.execute {
-  width: 128px;  /* сделаем кнопку шире других */
-  border-radius: 24px;  /* подкорректируем радиус скругления */
+.book-house-service-filter-input {
+    margin-bottom: 20px;
 }
 
-/* селектор для поля вывода результата */
-.result {
-  height: 60px;
-  width: 327px;
-  margin-bottom: 10px;            /* отступ снизу */
-  padding-right: 10px;            /* выступ справа */
-  background: rgb(51, 51, 51);  /* задаем темно-серый цвет */
-  border-radius: 24px;
-  display: flex;                  /* включаем режим Flexbox */
-  align-items: center;            /* центрируем по вертикали */
-  justify-content: flex-end;      /* прижимаем к правому краю */
-  color: rgb(255, 255, 255);
-  font-size: 28px;
-  font-family: "Open Sans", sans-serif
+/* Размер для картинок на главной странице (переопределяет Bootstrap) */
+.card-img-top {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
 }
 
-.calculator {
-  width: fit-content;                   /* устанавливаем ширину блока по содержимому */
-  margin: 0 auto;                       /* автоматические отступы слева и справа для центрирования по горизонтали */
-  border: 1px solid rgb(51, 51, 51);  /* темно-серая рамка */
-  padding: 30px;                        /* выступ от кнопок */
-  border-radius: 24px;
+/* Размер для картинки на странице Подробнее */
+.book-house-service-detail__image {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
 }
 
-/* стиль для ссылки-кнопки GitHub */
-a.my-btn {
-  display: inline-flex;     /* делаем флекс-контейнером, чтобы работало центрирование */
-  align-items: center;      /* центрируем текст по вертикали */
-  justify-content: center;  /* центрируем текст по горизонтали */
-  text-decoration: none;    /* yбираем стандартное подчеркивание ссылки */
-  width: 335px;
-  border-radius: 24px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+/* Кнопки Подробнее, Удалить и Добавить (копия первой) */
+.book-house-service-custom-btn {
+    background: linear-gradient(rgb(111, 207, 151) 0px, rgb(39, 174, 96) 100%);
+    border: none;
+    color: white !important;
+}
+.book-house-service-custom-btn:hover {
+    box-shadow: 0 6px 12px rgba(33,150,83,.45),0 0 0 rgba(0,0,0,.25) inset
 }
 
-.header {
-  color: rgb(0, 0, 0);  /* черный цвет текста */
-  text-align: center;     /* выравнивание по центру */
-  margin-bottom: 20px;    /* отступ снизу */
-  font-family: "Open Sans", sans-serif;
-  font-size: 20px;
+.book-house-service-custom-btn:active {
+    box-shadow: 0 0 0 rgba(0,0,0,.2),0 2px 2px rgba(0,0,0,.25) inset
 }
 
-.highlight {
-  background: rgb(39, 174, 96);  /* зеленый цвет выделения текста */
-}
-
-.my-btn.special {
-  width: 335px;
-  margin-top: 15px;
-  border-radius: 24px;
+/* Шрифт для всей страницы */
+body {
+    font-family: "Open Sans", sans-serif;
 }

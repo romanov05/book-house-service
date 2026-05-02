@@ -1,0 +1,23 @@
+{
+  "name": "book-house-service",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/romanov05/book-house-service#readme",
+  "bugs": {
+    "url": "https://github.com/romanov05/book-house-service/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romanov05/book-house-service.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  }
+}
