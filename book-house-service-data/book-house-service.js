@@ -5,7 +5,8 @@ export const bookHouseServiceMock = [
         bookHouseServiceDescription: "Офсетная и цифровая печать книг любого тиража. Высокое качество, оперативные сроки.",
         bookHouseServiceFullDescription: "Мы предлагаем полный цикл печати книг: от допечатной подготовки до послепечатной обработки. Используем современное оборудование и качественные материалы.",
         bookHouseServiceSrc: "book-house-service-images/print.png",
-        bookHouseServicePrice: "от 500 ₽"
+        bookHouseServicePrice: "от 500 ₽",
+        bookHouseServiceModelSrc: "book-house-service-models/printer.glb"
     },
     {
         bookHouseServiceId: 2,
@@ -13,7 +14,8 @@ export const bookHouseServiceMock = [
         bookHouseServiceDescription: "Пружина, скоба, термопереплет. Надёжное скрепление документов и книг.",
         bookHouseServiceFullDescription: "Брошюрование на пластиковую или металлическую пружину, скрепление скобой, термопереплет. Подходит для отчетов, курсовых, каталогов.",
         bookHouseServiceSrc: "book-house-service-images/brochuring.png",
-        bookHouseServicePrice: "от 150 ₽"
+        bookHouseServicePrice: "от 150 ₽",
+        bookHouseServiceModelSrc: "book-house-service-models/brochure.glb"
     },
     {
         bookHouseServiceId: 3,
@@ -21,7 +23,8 @@ export const bookHouseServiceMock = [
         bookHouseServiceDescription: "Защита обложки и страниц от загрязнений и механических повреждений.",
         bookHouseServiceFullDescription: "Ламинация матовая и глянцевая, односторонняя и двухсторонняя. Увеличивает срок службы изделия.",
         bookHouseServiceSrc: "book-house-service-images/lamination.png",
-        bookHouseServicePrice: "от 100 ₽"
+        bookHouseServicePrice: "от 100 ₽",
+        bookHouseServiceModelSrc: "book-house-service-models/paper.glb"
     },
     {
         bookHouseServiceId: 4,
@@ -29,7 +32,8 @@ export const bookHouseServiceMock = [
         bookHouseServiceDescription: "Твёрдый и мягкий переплёт для книг, дипломов, диссертаций.",
         bookHouseServiceFullDescription: "Изготовление переплётов любой сложности: твёрдый (картон, кожа, ткань) и мягкий (глянцевый, матовый). Долговечность и презентабельный вид.",
         bookHouseServiceSrc: "book-house-service-images/binding.png",
-        bookHouseServicePrice: "от 300 ₽"
+        bookHouseServicePrice: "от 300 ₽",
+        bookHouseServiceModelSrc: "book-house-service-models/binder.glb"
     },
     {
         bookHouseServiceId: 5,
@@ -37,7 +41,8 @@ export const bookHouseServiceMock = [
         bookHouseServiceDescription: "Фольгирование и блинтовое тиснение на обложке.",
         bookHouseServiceFullDescription: "Нанесение изображений фольгой (золото, серебро, цветная) или бескрасочное тиснение. Придаёт книге эксклюзивный вид.",
         bookHouseServiceSrc: "book-house-service-images/stamping.png",
-        bookHouseServicePrice: "от 200 ₽"
+        bookHouseServicePrice: "от 200 ₽",
+        bookHouseServiceModelSrc: "book-house-service-models/books.glb"
     },
     {
         bookHouseServiceId: 6,
@@ -45,6 +50,7 @@ export const bookHouseServiceMock = [
         bookHouseServiceDescription: "Обрезка бумаги, картона, пластика под нужный формат.",
         bookHouseServiceFullDescription: "Высокоточная резка листового материала. Подготовка блоков для брошюрования, создание визиток, открыток.",
         bookHouseServiceSrc: "book-house-service-images/cutting.png",
-        bookHouseServicePrice: "от 50 ₽"
+        bookHouseServicePrice: "от 50 ₽",
+        bookHouseServiceModelSrc: "book-house-service-models/paper.glb"
     }
 ];
