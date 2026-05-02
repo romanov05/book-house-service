@@ -348,3 +348,28 @@ DerivedData/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,webstorm+all,visualstudiocode,xcode,node
+
+### Postman ###
+
+# Postman app data (local, machine-specific)
+.postman/
+Postman/
+postman/
+
+# Environment files (often contain secrets like tokens, API keys)
+*.postman_environment.json
+*.postman_globals.json
+
+# Exported collections (если не хотите хранить их в репозитории)
+*.postman_collection.json
+
+# Newman (CLI runner for Postman)
+newman/
+newman-reports/
+*.newman/
+
+# Logs and temp files
+postman-*.log
+
+# Local scratch / backups
+*.postman_backup.json

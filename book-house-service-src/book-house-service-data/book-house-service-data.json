@@ -1,0 +1,44 @@
+[
+  {
+    "bookHouseServiceId": 1,
+    "bookHouseServiceTitle": "Печать",
+    "bookHouseServiceDescription": "Офсетная и цифровая печать книг любого тиража. Высокое качество, оперативные сроки.",
+    "bookHouseServiceFullDescription": "Мы предлагаем полный цикл печати книг: от допечатной подготовки до послепечатной обработки. Используем современное оборудование и качественные материалы.",
+    "bookHouseServicePrice": "от 500 ₽"
+  },
+  {
+    "bookHouseServiceId": 2,
+    "bookHouseServiceTitle": "Брошюрование",
+    "bookHouseServiceDescription": "Пружина, скоба, термопереплет. Надёжное скрепление документов и книг.",
+    "bookHouseServiceFullDescription": "Брошюрование на пластиковую или металлическую пружину, скрепление скобой, термопереплет. Подходит для отчетов, курсовых, каталогов.",
+    "bookHouseServicePrice": "от 150 ₽"
+  },
+  {
+    "bookHouseServiceId": 3,
+    "bookHouseServiceTitle": "Ламинация",
+    "bookHouseServiceDescription": "Защита обложки и страниц от загрязнений и механических повреждений.",
+    "bookHouseServiceFullDescription": "Ламинация матовая и глянцевая, односторонняя и двухсторонняя. Увеличивает срок службы изделия.",
+    "bookHouseServicePrice": "от 100 ₽"
+  },
+  {
+    "bookHouseServiceId": 4,
+    "bookHouseServiceTitle": "Переплёт",
+    "bookHouseServiceDescription": "Твёрдый и мягкий переплёт для книг, дипломов, диссертаций.",
+    "bookHouseServiceFullDescription": "Изготовление переплётов любой сложности: твёрдый (картон, кожа, ткань) и мягкий (глянцевый, матовый). Долговечность и презентабельный вид.",
+    "bookHouseServicePrice": "от 300 ₽"
+  },
+  {
+    "bookHouseServiceId": 5,
+    "bookHouseServiceTitle": "Тиснение",
+    "bookHouseServiceDescription": "Фольгирование и блинтовое тиснение на обложке.",
+    "bookHouseServiceFullDescription": "Нанесение изображений фольгой (золото, серебро, цветная) или бескрасочное тиснение. Придаёт книге эксклюзивный вид.",
+    "bookHouseServicePrice": "от 200 ₽"
+  },
+  {
+    "bookHouseServiceId": 6,
+    "bookHouseServiceTitle": "Резка",
+    "bookHouseServiceDescription": "Обрезка бумаги, картона, пластика под нужный формат.",
+    "bookHouseServiceFullDescription": "Высокоточная резка листового материала. Подготовка блоков для брошюрования, создание визиток, открыток.",
+    "bookHouseServicePrice": "от 50 ₽"
+  }
+]

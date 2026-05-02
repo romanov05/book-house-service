@@ -1,24 +1,28 @@
 {
   "name": "book-house-service",
   "version": "1.0.0",
-  "description": "",
-  "homepage": "https://github.com/romanov05/book-house-service#readme",
-  "bugs": {
-    "url": "https://github.com/romanov05/book-house-service/issues"
+  "description": "**Задание**: реализация на `Node.js` собственного веб-сервиса для `API`, данные хранятся в `json` файле. Тестирование через `Postman`/`Insomnia` 5 методов: список с фильтрацией, получение одной записи, добавление, редактирование, удаление.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node book-house-service-src/book-house-service-app.js",
+    "dev": "nodemon book-house-service-src/book-house-service-app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/romanov05/book-house-service.git"
   },
-  "license": "ISC",
+  "keywords": [],
   "author": "",
+  "license": "ISC",
   "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bugs": {
+    "url": "https://github.com/romanov05/book-house-service/issues"
   },
+  "homepage": "https://github.com/romanov05/book-house-service#readme",
   "dependencies": {
-    "bootstrap": "^5.3.8",
-    "three": "^0.184.0"
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
