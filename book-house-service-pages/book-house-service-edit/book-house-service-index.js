@@ -39,6 +39,10 @@ export class BookHouseServiceEditPage {
                         <label class="form-label">Картинка (src)</label>
                         <input type="text" class="form-control" value="${data.bookHouseServiceSrc || ''}">
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">3D модель (src .glb)</label>
+                        <input type="text" class="form-control" value="${data.bookHouseServiceModelSrc || ''}">
+                    </div>
                 </form>
             </div>
         `;
