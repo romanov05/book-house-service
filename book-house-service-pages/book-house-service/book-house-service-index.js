@@ -23,17 +23,17 @@ export class BookHouseServicePage {
         bookHouseServiceMainPage.bookHouseServiceRender();
     }
 
-    bookHouseServiceGetData() {
-        ajax.get(bookHouseServiceUrls.getServiceById(this.bookHouseServiceId), (data, status) => {
-            if (status >= 200 && status < 300 && data) {
-                const bookHouseServiceDetail = new BookHouseServiceDetailComponent(this.bookHouseServicePageRoot);
-                bookHouseServiceDetail.bookHouseServiceRender(data);
-            } else {
-                if (this.bookHouseServicePageRoot) {
-                    this.bookHouseServicePageRoot.innerHTML = `<p class="text-danger">Ошибка XHR: не удалось получить данные карточки.</p>`;
-                }
+    async bookHouseServiceGetData() {
+        const { data, status } = await ajax.get(bookHouseServiceUrls.getServiceById(this.bookHouseServiceId));
+
+        if (status >= 200 && status < 300 && data) {
+            const bookHouseServiceDetail = new BookHouseServiceDetailComponent(this.bookHouseServicePageRoot);
+            bookHouseServiceDetail.bookHouseServiceRender(data);
+        } else {
+            if (this.bookHouseServicePageRoot) {
+                this.bookHouseServicePageRoot.innerHTML = `<p class="text-danger">Ошибка Fetch: не удалось получить данные карточки.</p>`;
             }
-        });
+        }
     }
 
     bookHouseServiceRender() {

@@ -21,24 +21,30 @@ export class BookHouseServiceEditPage {
                 <form id="book-house-service-form">
                     <div class="mb-3">
                         <label class="form-label">Название</label>
-                        <input type="text" class="form-control" value="${data.bookHouseServiceTitle || ''}">
+                        <input type="text" id="edit-title" class="form-control" value="${data.bookHouseServiceTitle || ''}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Краткое описание</label>
-                        <textarea class="form-control" rows="2">${data.bookHouseServiceDescription || ''}</textarea>
+                        <textarea id="edit-description" class="form-control" rows="2">${data.bookHouseServiceDescription || ''}</textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Полное описание</label>
-                        <textarea class="form-control" rows="4">${data.bookHouseServiceFullDescription || ''}</textarea>
+                        <textarea id="edit-full-description" class="form-control" rows="4">${data.bookHouseServiceFullDescription || ''}</textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Цена</label>
-                        <input type="text" class="form-control" value="${data.bookHouseServicePrice || ''}">
+                        <input type="text" id="edit-price" class="form-control" value="${data.bookHouseServicePrice || ''}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Картинка (src)</label>
-                        <input type="text" class="form-control" value="${data.bookHouseServiceSrc || ''}">
+                        <input type="text" id="edit-src" class="form-control" value="${data.bookHouseServiceSrc || ''}">
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">3D модель (src .glb)</label>
+                        <input type="text" id="edit-model-src" class="form-control" value="${data.bookHouseServiceModelSrc || ''}">
+                    </div>
+                    <div id="book-house-service-edit-error" class="text-danger mb-3"></div>
+                    <button type="button" id="book-house-service-save-btn" class="btn book-house-service-custom-btn">Сохранить</button>
                 </form>
             </div>
         `;
@@ -49,23 +55,60 @@ export class BookHouseServiceEditPage {
         bookHouseServiceMainPage.bookHouseServiceRender();
     }
 
-    bookHouseServiceRender() {
+    async bookHouseServiceSave() {
+        const errorContainer = document.getElementById("book-house-service-edit-error");
+
+        const payload = {
+            bookHouseServiceTitle: document.getElementById("edit-title").value,
+            bookHouseServiceDescription: document.getElementById("edit-description").value,
+            bookHouseServiceFullDescription: document.getElementById("edit-full-description").value,
+            bookHouseServicePrice: document.getElementById("edit-price").value,
+            bookHouseServiceSrc: document.getElementById("edit-src").value,
+            bookHouseServiceModelSrc: document.getElementById("edit-model-src").value
+        };
+
+        let result;
+        if (this.bookHouseServiceId) {
+            result = await ajax.patch(bookHouseServiceUrls.updateServiceById(this.bookHouseServiceId), payload);
+        } else {
+            result = await ajax.post(bookHouseServiceUrls.createService(), payload);
+        }
+
+        if (result.status >= 200 && result.status < 300) {
+            this.bookHouseServiceGoHome();
+        } else {
+            if (errorContainer) {
+                errorContainer.innerText = `Ошибка сохранения: статус ${result.status}`;
+            }
+        }
+    }
+
+    bookHouseServiceAddListeners() {
+        const saveBtn = document.getElementById("book-house-service-save-btn");
+        if (saveBtn) {
+            saveBtn.addEventListener("click", () => this.bookHouseServiceSave());
+        }
+    }
+
+    async bookHouseServiceRender() {
         this.bookHouseServiceParent.innerHTML = "";
         const bookHouseServiceHomeButton = new BookHouseServiceHomeButtonComponent(this.bookHouseServiceParent);
         bookHouseServiceHomeButton.bookHouseServiceRender(this.bookHouseServiceGoHome.bind(this));
 
         if (this.bookHouseServiceId) {
-            ajax.get(bookHouseServiceUrls.getServiceById(this.bookHouseServiceId), (data, status) => {
-                if (status >= 200 && status < 300 && data) {
-                    const html = this.bookHouseServiceGetHTML(data);
-                    this.bookHouseServiceParent.insertAdjacentHTML('beforeend', html);
-                } else {
-                    this.bookHouseServiceParent.insertAdjacentHTML('beforeend', `<div class="container mt-3 text-danger">Ошибка загрузки данных XHR: ${status}</div>`);
-                }
-            });
+            const { data, status } = await ajax.get(bookHouseServiceUrls.getServiceById(this.bookHouseServiceId));
+
+            if (status >= 200 && status < 300 && data) {
+                const html = this.bookHouseServiceGetHTML(data);
+                this.bookHouseServiceParent.insertAdjacentHTML('beforeend', html);
+            } else {
+                this.bookHouseServiceParent.insertAdjacentHTML('beforeend', `<div class="container mt-3 text-danger">Ошибка загрузки данных Fetch: ${status}</div>`);
+            }
         } else {
             const html = this.bookHouseServiceGetHTML();
             this.bookHouseServiceParent.insertAdjacentHTML('beforeend', html);
         }
+
+        this.bookHouseServiceAddListeners();
     }
 }

@@ -18,7 +18,7 @@
 }
 
 .book-house-service-app-header__home-btn {
-    color: white;
+    color: white !important;
     border: none;
     transition: background-color 0.2s;
 }

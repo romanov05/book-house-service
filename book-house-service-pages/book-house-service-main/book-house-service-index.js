@@ -25,42 +25,42 @@ export class BookHouseServiceMainPage {
         `;
     }
 
-    bookHouseServiceGetData(searchQuery = "") {
+    async bookHouseServiceGetData(searchQuery = "") {
         const errorContainer = document.getElementById("book-house-service-error");
 
-        ajax.get(bookHouseServiceUrls.getServices(searchQuery), (data, status) => {
-            if (status >= 200 && status < 300 && data) {
-                if (errorContainer) errorContainer.innerText = "";
+        const { data, status } = await ajax.get(bookHouseServiceUrls.getServices(searchQuery));
 
-                let filteredData = data;
-                if (searchQuery.trim() !== "") {
-                    filteredData = data.filter(item =>
-                        item.bookHouseServiceTitle.toLowerCase().includes(searchQuery.toLowerCase())
-                    );
-                }
+        if (status >= 200 && status < 300 && data) {
+            if (errorContainer) errorContainer.innerText = "";
 
-                this.bookHouseServiceRenderServices(filteredData);
-            } else {
-                if (errorContainer) errorContainer.innerText = `Ошибка XHR. Статус: ${status}`;
-                this.bookHouseServiceRenderServices([]);
+            let filteredData = data;
+            if (searchQuery.trim() !== "") {
+                filteredData = data.filter(item =>
+                    item.bookHouseServiceTitle.toLowerCase().includes(searchQuery.toLowerCase())
+                );
             }
-        });
+
+            this.bookHouseServiceRenderServices(filteredData);
+        } else {
+            if (errorContainer) errorContainer.innerText = `Ошибка Fetch. Статус: ${status}`;
+            this.bookHouseServiceRenderServices([]);
+        }
     }
 
-    bookHouseServiceDelete(id) {
+    async bookHouseServiceDelete(id) {
         const errorContainer = document.getElementById("book-house-service-error");
 
-        ajax.delete(bookHouseServiceUrls.getServiceById(id), (data, status) => {
-            if (status >= 200 && status < 300) {
-                if (errorContainer) errorContainer.innerText = "";
-                this.bookHouseServiceGetData();
-            } else {
-                if (errorContainer) {
-                    errorContainer.innerText = `Ошибка при удалении: статус ${status}`;
-                }
-                console.error(`Ошибка удаления: ${status}`);
+        const { status } = await ajax.delete(bookHouseServiceUrls.getServiceById(id));
+
+        if (status >= 200 && status < 300) {
+            if (errorContainer) errorContainer.innerText = "";
+            this.bookHouseServiceGetData();
+        } else {
+            if (errorContainer) {
+                errorContainer.innerText = `Ошибка при удалении: статус ${status}`;
             }
-        });
+            console.error(`Ошибка удаления: ${status}`);
+        }
     }
 
     bookHouseServiceRenderServices(items) {
