@@ -14,8 +14,9 @@ export class BookHouseServiceMainPage {
         return `
             <div id="book-house-service-main-page">
                 <div class="container">
-                    <div class="book-house-service-filter-input">
+                    <div class="book-house-service-filter-input" style="display: flex; gap: 10px; margin-bottom: 15px;">
                         <input type="text" id="book-house-service-filter-input-id" class="form-control" placeholder="Фильтр">
+                        <button id="book-house-service-search-btn" class="btn book-house-service-custom-btn">Найти</button>
                     </div>
                     <button id="book-house-service-add-btn" class="btn book-house-service-custom-btn mb-3">Добавить услугу</button>
                     <div id="book-house-service-error" class="text-danger mb-2"></div>
@@ -103,9 +104,11 @@ export class BookHouseServiceMainPage {
         this.bookHouseServiceParent.insertAdjacentHTML('beforeend', bookHouseServiceHtml);
 
         const filterInput = document.getElementById("book-house-service-filter-input-id");
-        if (filterInput) {
-            filterInput.addEventListener("input", (e) => {
-                this.bookHouseServiceGetData(e.target.value);
+        const searchBtn = document.getElementById("book-house-service-search-btn");
+
+        if (searchBtn && filterInput) {
+            searchBtn.addEventListener("click", () => {
+                this.bookHouseServiceGetData(filterInput.value);
             });
         }
 
