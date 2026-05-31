@@ -20,7 +20,7 @@ bookHouseServiceApp.use((req, res, next) => {
 
 bookHouseServiceApp.use(express.static(path.join(__dirname, '../public')));
 
-bookHouseServiceApp.use('/services', bookHouseServiceRouter);
+bookHouseServiceApp.use('/book-house-service', bookHouseServiceRouter);
 
 bookHouseServiceApp.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
